@@ -86,7 +86,7 @@ const Header = () => {
                 }}
                 
                 className="text-white-700 dark:text-white-900 hover:text-blue-600
-                dark:hover:text-blue-400 transition-colors duration-300" href="#">
+                dark:hover:text-blue-400 transition-colors duration-300" href="https://github.com/kaimind-consulting">
                     <FiGithub className="w-5 h-5"/>
                     
                 </motion.a>
@@ -100,7 +100,7 @@ const Header = () => {
                 }}
                 
                 className="text-white-700 dark:text-white-900 hover:text-blue-600
-                dark:hover:text-blue-400 transition-colors duration-300" href="#">
+                dark:hover:text-blue-400 transition-colors duration-300" href="https://www.instagram.com/kaimind.data?igsh=MXZsaDE0YTdxbG9pZA==">
                     <FiInstagram className="w-5 h-5"/>
                     
                 </motion.a>
@@ -114,7 +114,7 @@ const Header = () => {
                 }}
                 
                 className="text-white-700 dark:text-white-900 hover:text-blue-600
-                dark:hover:text-blue-400 transition-colors duration-300" href="#">
+                dark:hover:text-blue-400 transition-colors duration-300" href="https://www.linkedin.com/company/kaimind/posts/?feedView=all">
                     <FiLinkedin className="w-5 h-5"/>
                     
                 </motion.a>
@@ -178,15 +178,15 @@ const Header = () => {
             dark:border-white-700">
                 
                 <div className="flex space-x-5">
-                    <motion.a href="#">
+                    <motion.a href="https://github.com/kaimind-consulting">
                         <FiGithub className="h-5 w-5 text-white"/>
                     </motion.a>
 
-                    <motion.a href="#">
+                    <motion.a href="https://www.instagram.com/kaimind.data?igsh=MXZsaDE0YTdxbG9pZA==">
                         <FiInstagram className="h-5 w-5 text-white"/>
                     </motion.a>
 
-                    <motion.a href="#">
+                    <motion.a href="https://www.linkedin.com/company/kaimind/posts/?feedView=all">
                         <FiLinkedin className="h-5 w-5 text-white"/>
                     </motion.a>
                 </div>
