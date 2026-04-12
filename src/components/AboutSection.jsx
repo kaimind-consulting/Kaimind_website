@@ -7,7 +7,7 @@ const profiles = [
     {
         name: "Jeremy",
         surname: "Uzcategui",
-        image: "images/person.png",
+        image: "/src/assets/person.png",
         description: (
             <>
                 Mi enfoque profesional combina la rigurosidad matemática con la 
@@ -30,7 +30,7 @@ const profiles = [
     {
         name: "Daniel",
         surname: "Camacho",
-        image: "images/person.png",
+        image: "/src/assets/person.png",
         description: (
             <>
                 Pon tu descripción aqui Daniel
@@ -40,7 +40,7 @@ const profiles = [
     {
         name: "Roberto",
         surname: "Schaefer",
-        image: "images/person.png", // CAMBIA ESTO por la imagen de tu socio
+        image: "/src/assets/person.png", // CAMBIA ESTO por la imagen de tu socio
         description: (
             <>
                 Pon tu descripción aqui Roberto

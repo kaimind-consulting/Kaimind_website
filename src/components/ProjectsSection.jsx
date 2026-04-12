@@ -15,17 +15,17 @@ const ProjectsSection = () => {
         {
             id: 1,
             title: "Websites",
-            imageSrc: "/Page_kaimind_Test/images/Vibrafesta.png"
+            imageSrc: "/Kaimind_website/src/assets/Vibrafesta.png"
         },
         {
             id: 2,
             title: "Implementacion de Dashboards",
-            imageSrc: "/Page_kaimind_Test/images/Portada.png"
+            imageSrc: "/Kaimind_website/src/assets/Portada.png"
         },
         {
             id: 3,
             title: "Analisis de datos",
-            imageSrc: "/Page_kaimind_Test/images/geoespacial.png"
+            imageSrc: "/Kaimind_website/src/assets/geoespacial.png"
         }
     ]
 
