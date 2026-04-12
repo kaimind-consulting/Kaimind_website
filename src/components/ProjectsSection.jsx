@@ -2,6 +2,9 @@ import { useRef, useEffect } from 'react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SlShareAlt } from 'react-icons/sl';
+import VibraImg from '../assets/Vibrafesta.png';
+import PortadaImg from '../assets/Portada.png';
+import GeopatialImg from '../assets/geoespacial.png';
 
 const ProjectsSection = () => {
     const sectionRef = useRef(null);
@@ -15,17 +18,17 @@ const ProjectsSection = () => {
         {
             id: 1,
             title: "Websites",
-            imageSrc: "/Kaimind_website/src/assets/Vibrafesta.png"
+            imageSrc: VibraImg
         },
         {
             id: 2,
             title: "Implementacion de Dashboards",
-            imageSrc: "/Kaimind_website/src/assets/Portada.png"
+            imageSrc: PortadaImg
         },
         {
             id: 3,
             title: "Analisis de datos",
-            imageSrc: "/Kaimind_website/src/assets/geoespacial.png"
+            imageSrc: GeopatialImg
         }
     ]
 

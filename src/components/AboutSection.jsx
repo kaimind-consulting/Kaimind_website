@@ -1,13 +1,14 @@
 import { useRef, useEffect, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import personImg from '../assets/person.png';
 
 // LOS PERFILES
 const profiles = [
     {
         name: "Jeremy",
         surname: "Uzcategui",
-        image: "/src/assets/person.png",
+        image: personImg,
         description: (
             <>
                 Mi enfoque profesional combina la rigurosidad matemática con la 
@@ -30,7 +31,7 @@ const profiles = [
     {
         name: "Daniel",
         surname: "Camacho",
-        image: "/src/assets/person.png",
+        image: personImg,
         description: (
             <>
                 Pon tu descripción aqui Daniel
@@ -40,7 +41,7 @@ const profiles = [
     {
         name: "Roberto",
         surname: "Schaefer",
-        image: "/src/assets/person.png", // CAMBIA ESTO por la imagen de tu socio
+        image: personImg, // CAMBIA ESTO por la imagen de tu socio
         description: (
             <>
                 Pon tu descripción aqui Roberto
