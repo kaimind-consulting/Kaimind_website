@@ -8,7 +8,7 @@ const HeroSection = () => {
 
       <div className="absolute inset-0 z-0 lg:left-[0%] lg:w-[110%] w-full h-full">
         <Spline className="w-full h-full"
-        scene="https://prod.spline.design/LnpnD9BbEdIrt3IV/scene.splinecode" 
+        scene="https://prod.spline.design/LnpnD9BbEdIrt3IV/scene.splinecode"
         />
 
       </div>
@@ -37,10 +37,11 @@ const HeroSection = () => {
               delay: 0.5, 
               duration: 1
             }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl text-white leading-tight"
+            style={{ fontFamily: 'Caffie Lofie, sans-serif', fontStyle: 'italic' }}
           >
             Construimos El Futuro <br className="hidden md:block" />
-            <span className="text-blue-500">Sobre Datos</span>
+            <span className="text-[#4CAE7E] font-medium">Sobre Datos</span>
           </motion.h1>
 
           <motion.p
@@ -53,7 +54,7 @@ const HeroSection = () => {
               delay: 0.8,
               duration: 1
             }}
-            className="text-base md:text-0.5lg lg:text-0.5xl text-gray-300 max-w-xl leading-relaxed font-bold"
+            className="text-base md:text-0.5lg lg:text-0.5xl text-gray-300 max-w-xl leading-relaxed font-poppins font-medium tracking-wide"
           >
             Somos especialistas en transformar la complejidad operativa en 
             soluciones digitales claras e intuitivas. Diseñamos e implementamos 

@@ -2,6 +2,10 @@ import { motion, AnimatePresence } from "framer-motion"
 import { FiGithub, FiInstagram, FiLinkedin, FiMenu, FiX} from "react-icons/fi"
 import { useState } from "react"
 
+// Importa tu imagen (ajusta la ruta según donde tengas guardada la imagen)
+import logokaimind from "../assets/LOGO KAIMIND TAG V.png" // Ejemplo: si está en src/assets/logo.png
+// O si está en la carpeta public:
+// const logo = "/logo.png"
 
 const Header = () => {
   // Desplegable del Menu
@@ -34,22 +38,21 @@ const Header = () => {
             }}
             className="flex items-center">
 
-                <div className="h-10 w-10 rounded-xl 
-                bg-gradient-to-r from-gray-500 to-gray-100 
-                flex items-center justify-center text-blue-600 
-                font-bold text-xl mr-3">
-                    K
+                {/* Reemplaza este div con la imagen */}
+                <div className="h-60 w-60 rounded-xl overflow-hidden 
+                hover:scale-110 transition-transform duration-200">
+                    <img 
+                        src={logokaimind} 
+                        alt="Kaimind Logo"
+                        className="w-full h-full object-contain"
+                    />
                 </div>
-
-                <span className="text-xl font-bold bg-gradient-to-r 
-                from-gray-300 to-gray-100 bg-clip-text text-transparent">
-                    Kaimind
-                </span>
 
             </motion.div>
 
+            {/* Resto del código se mantiene igual... */}
             {/* Barra de navegacion para escritorio*/}
-            <nav className="lg:flex hidden space-x-8 font-bold">
+            <nav className="lg:flex hidden space-x-8 font-poppins font-medium tracking-wide">
                 {["Inicio", "Nosotros", "Proyectos", "Experiencia", "Siguenos"].map((item, 
                 index) => ( 
                     <motion.a
@@ -63,12 +66,12 @@ const Header = () => {
                         delay: 0.7 + index * 0.2,
                     }}
                     className="relative text-white-800 dark:text-white-200 
-                    hover:white-600 dark:hover:text-white-400 font-medium
-                    transition-colors duration-300 group"
+                    hover:white-600 dark:hover:text-white-400 transition-colors 
+                    duration-300 group"
                     href="#">
                         {item}
                         <span className="absolute bottom-0 left-0 w-0 h-0.5
-                        bg-blue-600 group-hover:w-full transition-all 
+                        bg-[#4CAE7E] group-hover:w-full transition-all 
                         duration-300"></span>
                     </motion.a>
                 ))}
@@ -85,8 +88,8 @@ const Header = () => {
                     duration:0.8
                 }}
                 
-                className="text-white-700 dark:text-white-900 hover:text-blue-600
-                dark:hover:text-blue-400 transition-colors duration-300" href="https://github.com/kaimind-consulting">
+                className="text-white-700 dark:text-white-900 hover:text-[#4CAE7E]
+                dark:hover:text-[#4CAE7E] transition-colors duration-300" href="https://github.com/kaimind-consulting">
                     <FiGithub className="w-5 h-5"/>
                     
                 </motion.a>
@@ -99,8 +102,8 @@ const Header = () => {
                     duration:0.8
                 }}
                 
-                className="text-white-700 dark:text-white-900 hover:text-blue-600
-                dark:hover:text-blue-400 transition-colors duration-300" href="https://www.instagram.com/kaimind.data?igsh=MXZsaDE0YTdxbG9pZA==">
+                className="text-white-700 dark:text-white-900 hover:text-[#4CAE7E]
+                dark:hover:text-[#4CAE7E] transition-colors duration-300" href="https://www.instagram.com/kaimind.data?igsh=MXZsaDE0YTdxbG9pZA==">
                     <FiInstagram className="w-5 h-5"/>
                     
                 </motion.a>
@@ -113,8 +116,8 @@ const Header = () => {
                     duration:0.8
                 }}
                 
-                className="text-white-700 dark:text-white-900 hover:text-blue-600
-                dark:hover:text-blue-400 transition-colors duration-300" href="https://www.linkedin.com/company/kaimind/posts/?feedView=all">
+                className="text-white-700 dark:text-white-900 hover:text-[#4CAE7E]
+                dark:hover:text-[#4CAE7E] transition-colors duration-300" href="https://www.linkedin.com/company/kaimind/posts/?feedView=all">
                     <FiLinkedin className="w-5 h-5"/>
                     
                 </motion.a>
@@ -132,8 +135,8 @@ const Header = () => {
                     damping: 15,
                 }}
                 className="ml-4 px-4 py-2 rounded-xl bg-gradient-to-r from-gray-400
-                to-gray-100 text-blue-700 font-bold hover:from-blue-700
-                hover:to-blue-900 hover:text-white transition-all duration-500">
+                to-gray-100 text-[#4CAE7E] hover:from-[#4CAE7E]
+                hover:to-[#3d8b63] hover:text-white transition-all duration-500 font-poppins font-medium tracking-wide">
                     Contactanos!
                 </motion.button>
             </div>
@@ -198,8 +201,8 @@ const Header = () => {
                     openContactForm()
                 }}
                 className="mt-4 block w-full px-4 py-2 rounded-lg
-                bg-gradient-to-r from-gray-400 to-gray-100 text-blue-700 font-bold
-                hover:to-blue-900 hover:text-white transition-all duration-500">
+                bg-gradient-to-r from-gray-400 to-gray-100 text-[#4CAE7E] font-bold
+                hover:to-[#3d8b63] hover:text-white transition-all duration-500 font-poppins font-medium tracking-wide">
                     Contactanos
                 </button>
             </div>
@@ -231,8 +234,8 @@ const Header = () => {
                         shadow-lg w-full max-w-md p-6"
                     >
                         <div className="flex justify-between items-center
-                        mb-4">
-                            <h1 className="text-2xl font-bold
+                        mb-4 font-poppins font-medium tracking-wide">
+                            <h1 className="text-2xl
                             text-gray-100">
                                 ¡Contactanos!
                             </h1>
@@ -248,7 +251,7 @@ const Header = () => {
                         <form className="space-y-4">
                             <div>
                                 <label htmlFor="name" className="block
-                                text-sm font-medium text-gray-300 mb-1">
+                                text-sm font-poppins font-medium tracking-wide text-gray-300 mb-1">
                                     Nombre
                                 </label>
                                 <input 
@@ -257,14 +260,14 @@ const Header = () => {
                                     placeholder="Tu Nombre"
                                     className="w-full px-4 py-2 border 
                                     border-gray-600 rounded-lg focus:ring-2
-                                    focus:ring-violet-500
-                                    focus:border-violet-500 bg-gray-700"
+                                    focus:ring-[#4CAE7E]
+                                    focus:border-[#4CAE7E] bg-gray-700 placeholder:italic"
                                 />
                             </div>
 
                             <div>
                                 <label htmlFor="email" className="block
-                                text-sm font-medium text-gray-300 mb-1">
+                                text-sm font-poppins font-medium tracking-wide text-gray-300 mb-1">
                                     Email
                                 </label>
                                 <input 
@@ -273,14 +276,14 @@ const Header = () => {
                                     placeholder="Tu correo electronico"
                                     className="w-full px-4 py-2 border 
                                     border-gray-600 rounded-lg focus:ring-2
-                                    focus:ring-violet-500
-                                    focus:border-violet-500 bg-gray-700"
+                                    focus:ring-[#4CAE7E]
+                                    focus:border-[#4CAE7E] bg-gray-700 placeholder:italic"
                                 />
                             </div>
 
                             <div>
                                 <label htmlFor="message" className="block
-                                text-sm font-medium text-gray-300 mb-1">
+                                text-sm font-poppins font-medium tracking-wide text-gray-300 mb-1">
                                     Mensaje
                                 </label>
                                 <textarea
@@ -289,8 +292,8 @@ const Header = () => {
                                     placeholder="¿Como podemos ayudarte?"
                                     className="w-full px-4 py-2 border 
                                     border-gray-600 rounded-lg focus:ring-2
-                                    focus:ring-violet-500
-                                    focus:border-violet-500 bg-gray-700"
+                                    focus:ring-[#4CAE7E]
+                                    focus:border-[#4CAE7E] bg-gray-700 placeholder:italic"
                                 />
                             </div>
 
@@ -299,10 +302,10 @@ const Header = () => {
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
                                 className="w-full px-4 py-2
-                                bg-gradient-to-r from-violet-600 to-violet-400
-                                hover:from-violet-700 hover:to-purple-700
+                                bg-gradient-to-r from-[#4CAE7E] to-[#3d8b63]
+                                hover:from-[#3d8b63] hover:to-[#2d6b4a]
                                 transition-all duration-300 rounded-lg shadow-md
-                                hover:shadow-lg hover:shadow-violet-600/50">
+                                hover:shadow-lg hover:shadow-[#4CAE7E]/50 font-poppins font-medium tracking-wide placeholder:poppins">
                                 Enviar Mensaje
                             </motion.button>
                         </form>
