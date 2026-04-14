@@ -67,6 +67,9 @@ const HeroSection = () => {
           </motion.p>
         </div>
       </div>
+
+      {/* Difuminado inferior (conexión con siguiente sección) */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 h-24 bg-gradient-to-t from-[#4CAE7E] via-black/80 to-transparent pointer-events-none"></div>
       
     </section>
   );

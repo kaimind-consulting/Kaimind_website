@@ -190,6 +190,7 @@ const AboutSection = () => {
     bg-gradient-to-b from-neutral-900 to-neutral-800 flex flex-col items-center 
     py-10 md:py-0 md:justify-center">
 
+
         {/* Fondo de Estrellas */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {[...Array(10)].map((_, i) => ( 
@@ -210,6 +211,7 @@ const AboutSection = () => {
         </div>
 
         <div className="container mx-auto px-6 z-10 flex flex-col items-center w-full">
+
             
             {/* TÍTULO */}
             <div className="mb-8 md:mb-16 mt-10 md:mt-0">
@@ -270,6 +272,7 @@ const AboutSection = () => {
                 </div>
 
             </div>
+            
         </div>
     </section>
   )
