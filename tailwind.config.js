@@ -1,9 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "*.{js,ts,jsx,tsx,mdx}"],
+  content: ["./index.html", "./v2/index.html", "./src/**/*.{js,ts,jsx,tsx}", "*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['"Caffie Lofie"', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        code: ['"Source Code Pro"', 'monospace'],
+      },
       colors: {
+        kblack: "#000000",
+        kgreen: "#4CAE7E",
+        kblue: "#1F2AA5",
+        ksystem: "#465DA9",
+        kpurple: "#635DC2",
+        kturquoise: "#7FD7C3",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
