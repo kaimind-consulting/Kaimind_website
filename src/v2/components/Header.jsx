@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiGithub, FiInstagram, FiLinkedin, FiMenu, FiX } from "react-icons/fi";
+import { FiGithub, FiInstagram, FiLinkedin, FiMenu, FiX, FiCheckCircle, FiAlertCircle, FiLoader } from "react-icons/fi";
 import isotipo from "../assets/isotipo-white.svg";
+import { sendContact } from "../lib/contact";
 
 const NAV = [
   { label: "Inicio", href: "#inicio" },
@@ -16,16 +17,34 @@ const SOCIALS = [
 ];
 
 export const ContactModal = ({ open, onClose }) => {
-  const handleSubmit = (e) => {
+  const [status, setStatus] = useState("idle");
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const subject = encodeURIComponent(
-      `Contacto web — ${data.get("name") || "Sin nombre"}`
-    );
-    const body = encodeURIComponent(
-      `Nombre: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`
-    );
-    window.location.href = `mailto:kaimindconsulting@gmail.com?subject=${subject}&body=${body}`;
+    const form = e.target;
+    const data = new FormData(form);
+    if (data.get("website")) return; // honeypot
+
+    setStatus("sending");
+    const res = await sendContact({
+      name: data.get("name"),
+      email: data.get("email"),
+      message: data.get("message"),
+      origen: "Modal Contáctanos",
+    });
+    setFeedback(res.message);
+    if (res.ok) {
+      setStatus("success");
+      form.reset();
+    } else {
+      setStatus("error");
+    }
+  };
+
+  const handleClose = () => {
+    setStatus("idle");
+    setFeedback("");
     onClose();
   };
 
@@ -38,7 +57,7 @@ export const ContactModal = ({ open, onClose }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[90] flex items-center justify-center p-4"
-          onClick={onClose}
+          onClick={handleClose}
         >
           <motion.div
             initial={{ scale: 0.92, opacity: 0, y: 24 }}
@@ -54,7 +73,7 @@ export const ContactModal = ({ open, onClose }) => {
                 <h2 className="text-3xl text-white font-display">Contáctanos</h2>
               </div>
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 aria-label="Cerrar"
                 className="text-white/60 hover:text-kturquoise transition-colors"
               >
@@ -66,6 +85,8 @@ export const ContactModal = ({ open, onClose }) => {
             </p>
 
             <form className="space-y-4 font-poppins" onSubmit={handleSubmit}>
+              {/* Honeypot anti-spam */}
+              <input type="text" name="website" tabIndex="-1" autoComplete="off" className="hidden" aria-hidden="true" />
               <div>
                 <label htmlFor="v2-name" className="block text-xs font-code tracking-widest text-kturquoise mb-1.5 uppercase">
                   Nombre
@@ -107,12 +128,33 @@ export const ContactModal = ({ open, onClose }) => {
               </div>
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full px-4 py-3 rounded-lg bg-kgreen text-black font-semibold hover:bg-kturquoise transition-colors duration-300"
+                disabled={status === "sending"}
+                whileHover={status === "sending" ? {} : { scale: 1.02 }}
+                whileTap={status === "sending" ? {} : { scale: 0.98 }}
+                className="w-full px-4 py-3 rounded-lg bg-kgreen text-black font-semibold hover:bg-kturquoise transition-colors duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Enviar mensaje
+                {status === "sending" ? (
+                  <>
+                    <FiLoader className="w-5 h-5 animate-spin" />
+                    Enviando…
+                  </>
+                ) : (
+                  "Enviar mensaje"
+                )}
               </motion.button>
+
+              {status === "success" && (
+                <p className="flex items-center gap-2 text-sm text-kgreen">
+                  <FiCheckCircle className="w-5 h-5 shrink-0" />
+                  {feedback}
+                </p>
+              )}
+              {status === "error" && (
+                <p className="flex items-center gap-2 text-sm text-red-400">
+                  <FiAlertCircle className="w-5 h-5 shrink-0" />
+                  {feedback}
+                </p>
+              )}
             </form>
           </motion.div>
         </motion.div>

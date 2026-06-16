@@ -1,21 +1,19 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
-import { FiMail, FiArrowRight } from "react-icons/fi";
+import { FiMail, FiArrowRight, FiCheckCircle, FiAlertCircle, FiLoader } from "react-icons/fi";
 import GridBackdrop from "./GridBackdrop";
 import FloatingCubes from "./FloatingCubes";
+import { CONTACT, whatsappLink, sendContact } from "../lib/contact";
 
-const WHATSAPP = "584120745686";
-const WHATSAPP_MSG = encodeURIComponent(
-  "¡Hola Kaimind! Me gustaría conocer más sobre sus soluciones."
-);
-const EMAIL = "kaimindconsulting@gmail.com";
+const EMAIL = CONTACT.email;
 
 const CHANNELS = [
   {
     icon: FaWhatsapp,
     label: "Escríbenos por WhatsApp",
     sub: "+58 412-0745686 · respuesta rápida",
-    href: `https://wa.me/${WHATSAPP}?text=${WHATSAPP_MSG}`,
+    href: whatsappLink,
   },
   {
     icon: FiMail,
@@ -26,16 +24,31 @@ const CHANNELS = [
 ];
 
 const Contact = () => {
-  const handleSubmit = (e) => {
+  // idle | sending | success | error
+  const [status, setStatus] = useState("idle");
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const subject = encodeURIComponent(
-      `Proyecto — ${data.get("name") || "Sin nombre"}`
-    );
-    const body = encodeURIComponent(
-      `Nombre: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`
-    );
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    const form = e.target;
+    const data = new FormData(form);
+    // Honeypot anti-spam: si viene relleno, ignoramos en silencio.
+    if (data.get("website")) return;
+
+    setStatus("sending");
+    const res = await sendContact({
+      name: data.get("name"),
+      email: data.get("email"),
+      message: data.get("message"),
+      origen: "Sección Contacto",
+    });
+    setFeedback(res.message);
+    if (res.ok) {
+      setStatus("success");
+      form.reset();
+    } else {
+      setStatus("error");
+    }
   };
 
   return (
@@ -116,6 +129,15 @@ const Contact = () => {
             onSubmit={handleSubmit}
             className="p-6 md:p-8 rounded-2xl bg-black/70 border border-white/10 space-y-4 font-poppins"
           >
+            {/* Honeypot anti-spam (oculto para humanos) */}
+            <input
+              type="text"
+              name="website"
+              tabIndex="-1"
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
             <div>
               <label htmlFor="c-name" className="block text-xs font-code tracking-widest text-kturquoise mb-1.5 uppercase">
                 Nombre
@@ -157,13 +179,37 @@ const Contact = () => {
             </div>
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full px-4 py-3 rounded-lg bg-kgreen text-black font-semibold hover:bg-kturquoise transition-colors duration-300 flex items-center justify-center gap-2"
+              disabled={status === "sending"}
+              whileHover={status === "sending" ? {} : { scale: 1.02 }}
+              whileTap={status === "sending" ? {} : { scale: 0.98 }}
+              className="w-full px-4 py-3 rounded-lg bg-kgreen text-black font-semibold hover:bg-kturquoise transition-colors duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Enviar mensaje
-              <FiArrowRight className="w-5 h-5" />
+              {status === "sending" ? (
+                <>
+                  <FiLoader className="w-5 h-5 animate-spin" />
+                  Enviando…
+                </>
+              ) : (
+                <>
+                  Enviar mensaje
+                  <FiArrowRight className="w-5 h-5" />
+                </>
+              )}
             </motion.button>
+
+            {/* Feedback de envío */}
+            {status === "success" && (
+              <p className="flex items-center gap-2 text-sm text-kgreen">
+                <FiCheckCircle className="w-5 h-5 shrink-0" />
+                {feedback}
+              </p>
+            )}
+            {status === "error" && (
+              <p className="flex items-center gap-2 text-sm text-red-400">
+                <FiAlertCircle className="w-5 h-5 shrink-0" />
+                {feedback}
+              </p>
+            )}
           </motion.form>
         </div>
       </div>

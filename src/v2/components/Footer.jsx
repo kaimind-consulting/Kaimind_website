@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 import isotipo from "../assets/isotipo-white.svg";
 import FloatingCubes from "./FloatingCubes";
 import BrandPattern from "./BrandPattern";
 import CornerGlow from "./CornerGlow";
+import LegalModal from "./LegalModal";
 
 const SOCIALS = [
   { icon: FiGithub, href: "https://github.com/kaimind-consulting", label: "GitHub" },
@@ -11,6 +13,7 @@ const SOCIALS = [
 ];
 
 const Footer = ({ onContact }) => {
+  const [legal, setLegal] = useState(null); // "privacy" | "terms" | null
   return (
     <footer className="relative overflow-hidden bg-black border-t border-white/10">
       <BrandPattern tile={150} opacity={0.05} fade="linear-gradient(to bottom, transparent, black 55%)" />
@@ -75,15 +78,23 @@ const Footer = ({ onContact }) => {
             © {new Date().getFullYear()} Kaimind. Todos los derechos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-white/45 hover:text-white/80 text-sm font-poppins transition-colors">
+            <button
+              onClick={() => setLegal("privacy")}
+              className="text-white/45 hover:text-white/80 text-sm font-poppins transition-colors"
+            >
               Política de Privacidad
-            </a>
-            <a href="#" className="text-white/45 hover:text-white/80 text-sm font-poppins transition-colors">
+            </button>
+            <button
+              onClick={() => setLegal("terms")}
+              className="text-white/45 hover:text-white/80 text-sm font-poppins transition-colors"
+            >
               Términos de servicio
-            </a>
+            </button>
           </div>
         </div>
       </div>
+
+      <LegalModal doc={legal} onClose={() => setLegal(null)} />
     </footer>
   );
 };
