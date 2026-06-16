@@ -15,6 +15,8 @@ export default defineConfig({
         v1: resolve(__dirname, 'v1/index.html'),
         // Alias de la v2 → /v2/ (mantiene los enlaces ya compartidos)
         v2: resolve(__dirname, 'v2/index.html'),
+        // Landing de KaiHealth → kaimindconsulting.com/kaihealth.html
+        kaihealth: resolve(__dirname, 'kaihealth.html'),
       },
     },
   },

@@ -5,6 +5,17 @@ import FloatingCubes from "./FloatingCubes";
 
 const PANELS = [
   {
+    id: 0,
+    title: "KaiHealth",
+    tag: "14 días gratis",
+    description:
+      "Software de gestión clínica para psicólogos: pacientes, agenda con recordatorios, historias clínicas, tests, cuestionarios (PHQ-9, GAD-7) y planes de tratamiento con IA. Todo en un solo lugar.",
+    buttonText: "Empieza tu prueba",
+    buttonLink: "/kaihealth.html",
+    page: true,
+    code: "salud/clinica_",
+  },
+  {
     id: 1,
     title: "CV Match",
     tag: "New",
@@ -85,7 +96,9 @@ const Solutions = () => {
   };
 
   const open = (panel) => {
-    if (panel.external) {
+    if (panel.page) {
+      window.location.href = panel.buttonLink;
+    } else if (panel.external) {
       window.open(panel.buttonLink, "_blank", "noopener,noreferrer");
     } else {
       document.querySelector(panel.buttonLink)?.scrollIntoView({ behavior: "smooth" });
