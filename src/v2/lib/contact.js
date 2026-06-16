@@ -8,7 +8,7 @@
 //  3. Pega ese código aquí abajo, reemplazando el texto.
 //  Eso es todo: el formulario empezará a enviar de verdad.
 // ============================================================
-export const WEB3FORMS_ACCESS_KEY = "PEGA-AQUI-TU-ACCESS-KEY";
+export const WEB3FORMS_ACCESS_KEY = "4c2f701c-4f67-4927-ae50-790b5c7f192a";
 
 export const CONTACT = {
   whatsappNumber: "584120745686",

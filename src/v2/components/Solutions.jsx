@@ -44,6 +44,18 @@ const PANELS = [
   },
 ];
 
+// Capacidades completas de Kaimind (según su documento de servicios)
+const CAPABILITIES = [
+  "Software a medida",
+  "Dashboards & BI",
+  "Análisis de datos",
+  "Geolocalización",
+  "Computer Vision",
+  "Automatización de procesos",
+  "Consultoría en IA",
+  "Soluciones SaaS",
+];
+
 const Solutions = () => {
   const carouselRef = useRef(null);
   const [showLeft, setShowLeft] = useState(false);
@@ -178,6 +190,27 @@ const Solutions = () => {
             ))}
           </div>
         </div>
+
+        {/* Franja de capacidades — toda la amplitud de Kaimind */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-40px" }}
+          className="mt-16 md:mt-20 max-w-5xl mx-auto text-center"
+        >
+          <p className="k-eyebrow mb-6">// también desarrollamos_</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {CAPABILITIES.map((cap) => (
+              <span
+                key={cap}
+                className="px-4 py-2 rounded-full border border-white/12 text-white/70 text-sm font-poppins hover:border-kgreen/60 hover:text-white transition-colors duration-300"
+              >
+                {cap}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

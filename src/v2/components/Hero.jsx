@@ -1,5 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { motion } from "framer-motion";
+import isotipo from "../assets/isotipo-white.svg";
 import GridBackdrop from "./GridBackdrop";
 import CornerGlow from "./CornerGlow";
 
@@ -14,6 +15,9 @@ const fadeUp = (delay = 0) => ({
 });
 
 const Hero = ({ onContact }) => {
+  // Controla el loader: se desvanece cuando la escena 3D termina de cargar
+  const [sceneLoaded, setSceneLoaded] = useState(false);
+
   return (
     <section
       id="inicio"
@@ -35,12 +39,29 @@ const Hero = ({ onContact }) => {
         }}
       />
 
+      {/* Loader de marca mientras carga la escena 3D — se desvanece al estar lista */}
+      <div
+        className={`absolute inset-0 lg:left-[40%] lg:w-[70%] flex items-center justify-center pointer-events-none transition-opacity duration-700 ${
+          sceneLoaded ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="flex flex-col items-center gap-4">
+          <span className="grid place-items-center w-16 h-16 rounded-2xl bg-kgreen/15 border border-kgreen/30 animate-pulse">
+            <img src={isotipo} alt="" className="w-9 h-9 opacity-70" />
+          </span>
+          <span className="font-code text-[0.7rem] tracking-[0.3em] text-kturquoise/70 uppercase">
+            cargando experiencia_
+          </span>
+        </div>
+      </div>
+
       {/* Cubos 3D interactivos — la escena original, protagonista a la derecha */}
       <div className="absolute inset-0 lg:left-[40%] lg:w-[70%] w-full h-full opacity-80 lg:opacity-100">
         <Suspense fallback={null}>
           <Spline
             className="w-full h-full"
             scene="https://prod.spline.design/GqHF8DhByevkxM9B/scene.splinecode"
+            onLoad={() => setSceneLoaded(true)}
           />
         </Suspense>
       </div>

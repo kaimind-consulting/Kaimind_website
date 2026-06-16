@@ -7,6 +7,7 @@ import { sendContact } from "../lib/contact";
 const NAV = [
   { label: "Inicio", href: "#inicio" },
   { label: "Soluciones", href: "#soluciones" },
+  { label: "Proceso", href: "#proceso" },
   { label: "Contacto", href: "#contacto" },
 ];
 

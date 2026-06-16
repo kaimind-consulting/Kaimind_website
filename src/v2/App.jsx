@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header, { ContactModal } from "./components/Header";
 import Hero from "./components/Hero";
 import Solutions from "./components/Solutions";
+import Process from "./components/Process";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingContact from "./components/FloatingContact";
@@ -17,6 +18,7 @@ export default function App() {
       <main>
         <Hero onContact={openContact} />
         <Solutions />
+        <Process />
         {/* "Acerca de nosotros" retirado por ahora — el componente About.jsx
             sigue en el repo para retomarlo cuando estén las fotos/textos. */}
         <Contact onContact={openContact} />
