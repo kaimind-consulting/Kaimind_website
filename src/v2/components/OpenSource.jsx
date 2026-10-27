@@ -5,7 +5,7 @@ import { FiDatabase, FiExternalLink, FiGithub } from "react-icons/fi";
 // "Open source" — Venezuela en datos abiertos, el proyecto abierto de Kaimind.
 // Las cifras se leen de la API pública del proyecto (nunca se escriben a mano):
 // si la API no responde, la sección se muestra sin cifras.
-const DATOS = "https://datos.kaimindconsulting.com";
+const DATOS = "https://geopendatos.kaimindconsulting.com";
 const REPO = "https://github.com/Kaimind-Technologies/venezuela-datos-abiertos";
 
 const fmt = (n) => new Intl.NumberFormat("es-VE").format(n);
